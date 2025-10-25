@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #FFFFFF; /* white - Clinical laboratory foundation */
+  --color-secondary: #D8E0C7; /* green-200 - Gentle natural backing */
+  --color-accent: #AA7229; /* yellow-700 - Premium gold confidence */
+  
+  /* Background Colors */
+  --color-background: #F8F9F6; /* stone-50 - Subtle warmth */
+  --color-surface: #F0C48C; /* yellow-300 - Champagne highlights */
+  
+  /* Text Colors */
+  --color-text-primary: #6E7D4E; /* green-700 - Natural sophistication */
+  --color-text-secondary: #8A9B6B; /* green-600 - Clear hierarchy */
+  
+  /* Status Colors */
+  --color-success: #7A8F5A; /* green-600 - Growth confirmation */
+  --color-warning: #B8860B; /* yellow-600 - Gentle urgency */
+  --color-error: #A0522D; /* orange-700 - Warm concern */
+  
+  /* Shadow Variables */
+  --shadow-product: 0 4px 20px rgba(170, 114, 41, 0.08);
+  --shadow-card: 0 2px 12px rgba(170, 114, 41, 0.06);
+  
+  /* Border Variables */
+  --border-subtle: 1px solid #D8E0C7;
+  
+  /* Animation Variables */
+  --transition-gentle: 300ms ease-in-out;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-primary);
+    background-color: var(--color-background);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: var(--color-text-primary);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-white px-6 py-3 rounded-lg font-inter font-medium transition-all duration-300 hover:bg-opacity-90 hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-text-primary px-6 py-3 rounded-lg font-inter font-medium transition-all duration-300 hover:bg-opacity-80;
+  }
+  
+  .card-product {
+    @apply bg-primary rounded-xl p-6 transition-all duration-300;
+    box-shadow: var(--shadow-product);
+  }
+  
+  .card-ingredient {
+    @apply bg-primary rounded-lg p-4 border transition-all duration-300 hover:shadow-md;
+    border: var(--border-subtle);
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg bg-primary font-inter text-text-primary placeholder-text-secondary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50;
+    border: var(--border-subtle);
+  }
+  
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-surface));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .transition-gentle {
+    transition: var(--transition-gentle);
+  }
+  
+  .shadow-product {
+    box-shadow: var(--shadow-product);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .border-subtle {
+    border: var(--border-subtle);
+  }
+}
+
+/* Custom animations for serum and molecular effects */
+@keyframes serum-refraction {
+  0% { opacity: 0.7; transform: translateY(2px); }
+  50% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0.7; transform: translateY(2px); }
+}
+
+@keyframes molecule-float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(120deg); }
+  66% { transform: translateY(5px) rotate(240deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
+}
+
+.animate-serum {
+  animation: serum-refraction 4s ease-in-out infinite;
+}
+
+.animate-molecule {
+  animation: molecule-float 8s ease-in-out infinite;
+}
+
+/* Hover effects for ingredient cards */
+.ingredient-card:hover .molecule-structure {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.molecule-structure {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: var(--transition-gentle);
+}
